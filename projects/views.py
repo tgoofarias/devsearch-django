@@ -1,10 +1,13 @@
 from django.shortcuts import render
+from .models import Project
 
 # Create your views here.
 def projects(request):
-    msg = 'Hello you are on the project page'
-    return render(request, 'projects/projects.html', { 'message': msg })
+    projects = Project.objects.all()
+    return render(request, 'projects/projects.html', { 'projects': projects })
 
 
 def project(request, pk):
-    return render(request, 'projects/single-projects.html', {'pk': pk})
+    project = Project.objects.get(id=pk)
+    tags = project.tags.all()
+    return render(request, 'projects/single-projects.html', {'project': project, 'tags': tags})

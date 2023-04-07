@@ -1,5 +1,21 @@
 {% extends 'main.html' %}
 {% block content %}
     <h1>Projects Templates</h1>
-    <h2>{{ message }}</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Project</th>
+            <th>Votes</th>
+            <th>Ratio</th>
+        </tr>
+        {% for project in projects %}
+        <tr>
+            <td>{{project.id}}</td>
+            <td>{{project.title}}</td>
+            <td>{{project.vote_total}}</td>
+            <td>{{project.vote_ratio}}%</td>
+            <td><a href="{% url 'project' project.id %}">View</a></td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
