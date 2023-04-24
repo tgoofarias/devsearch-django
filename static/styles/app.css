@@ -323,6 +323,10 @@ img {
   Profile
 ========================*/
 
+.social__icon {
+  width: 40px;
+}
+
 .profile .card > .dev {
   padding: 4rem;
 }
